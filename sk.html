@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hacker Terminal</title>
+  <style>
+    body {
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+    }
+    #screen {
+      white-space: pre-wrap;
+      font-size: 15px;
+    }
+    #loginBox {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    input {
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      padding: 5px;
+      margin: 5px;
+    }
+    button {
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loginBox">
+  <h2>SECURE LOGIN</h2>
+  <input id="id" placeholder="ID"><br>
+  <input id="pw" type="password" placeholder="PASSWORD"><br>
+  <button onclick="login()">ENTER</button>
+</div>
+
+<div id="screen"></div>
+
+<script>
+const screen = document.getElementById("screen");
+let hacking = false;
+
+// 타이핑 사운드
+const audio = new Audio("https://www.soundjay.com/mechanical/keyboard-1.mp3");
+
+// 로그인
+function login() {
+  document.getElementById("loginBox").style.display = "none";
+  hacking = true;
+  startHack();
+}
+
+// 해킹 연출
+function startHack() {
+  let steps = [
+    "Connecting to server...",
+    "Bypassing firewall...",
+    "Injecting payload...",
+    "Access Denied...",
+    "Retrying...",
+    "Access Granted!",
+    "Downloading data..."
+  ];
+
+  let i = 0;
+  let interval = setInterval(() => {
+    screen.textContent += steps[i] + "\n";
+    i++;
+    if (i >= steps.length) {
+      clearInterval(interval);
+      fakeErrors();
+    }
+  }, 500);
+}
+
+// 가짜 에러 폭주
+function fakeErrors() {
+  let count = 0;
+  let interval = setInterval(() => {
+    screen.textContent += "ERROR 0x" + Math.floor(Math.random()*9999) + "\n";
+    count++;
+    if (count > 30) {
+      clearInterval(interval);
+      screen.textContent += "\nSYSTEM OVERRIDE COMPLETE\n";
+      startTyping();
+    }
+  }, 50);
+}
+
+// 해커 타이핑 코드
+const code = `
+function accessRoot() {
+  let secure = true;
+  while(secure) {
+    overrideSecurity();
+  }
+}
+
+const database = {
+  users: 102394,
+  passwords: "encrypted",
+};
+
+accessRoot();
+`;
+
+let index = 0;
+
+function startTyping() {
+  document.addEventListener("keydown", () => {
+    if (!hacking) return;
+
+    audio.currentTime = 0;
+    audio.play();
+
+    for (let i = 0; i < 5; i++) {
+      if (index < code.length) {
+        screen.textContent += code[index];
+        index++;
+      }
+    }
+
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+}
+</script>
+
+</body>
+</html>
