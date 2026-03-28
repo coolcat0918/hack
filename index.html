@@ -2,19 +2,40 @@
 <html>
 <head>
   <title>Hacker Terminal</title>
+
+  <!-- 해커 감성 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
   <style>
     body {
       background: black;
       color: #00ff00;
-      font-family: tahoma;
+      font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 20px;
-      overflow: hidden;
+      text-shadow: 0 0 5px #00ff00;
     }
+
     #screen {
       white-space: pre-wrap;
       font-size: 15px;
+      height: 90vh;
+      overflow-y: auto;
+      border: 1px solid #00ff00;
+      padding: 10px;
     }
+
+    /* 커서 */
+    #screen::after {
+      content: "_";
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
     #loginBox {
       position: absolute;
       top: 40%;
@@ -22,22 +43,27 @@
       transform: translate(-50%, -50%);
       text-align: center;
     }
+
     input {
       background: black;
       border: 1px solid #00ff00;
       color: #00ff00;
       padding: 5px;
       margin: 5px;
+      font-family: 'Share Tech Mono', monospace;
     }
+
     button {
       background: black;
       border: 1px solid #00ff00;
       color: #00ff00;
       padding: 5px 10px;
       cursor: pointer;
+      font-family: 'Share Tech Mono', monospace;
     }
   </style>
 </head>
+
 <body>
 
 <div id="loginBox">
@@ -78,6 +104,8 @@ function startHack() {
   let i = 0;
   let interval = setInterval(() => {
     screen.textContent += steps[i] + "\n";
+    screen.scrollTop = screen.scrollHeight;
+
     i++;
     if (i >= steps.length) {
       clearInterval(interval);
@@ -86,11 +114,13 @@ function startHack() {
   }, 500);
 }
 
-// 가짜 에러 폭주
+// 가짜 에러
 function fakeErrors() {
   let count = 0;
   let interval = setInterval(() => {
     screen.textContent += "ERROR 0x" + Math.floor(Math.random()*9999) + "\n";
+    screen.scrollTop = screen.scrollHeight;
+
     count++;
     if (count > 30) {
       clearInterval(interval);
@@ -100,11 +130,9 @@ function fakeErrors() {
   }, 50);
 }
 
-// 해커 타이핑 코드
 const code = `
 # ============================================
 # ULTRA CYBER HACKING INTERFACE v9.7.3
-# (Totally Fake – For Entertainment Only)
 # ============================================
 
 import time
@@ -134,7 +162,7 @@ def brute_force():
     typing_effect("[*] Starting brute force attack on encrypted node...")
     for i in range(0, 101, random.randint(1,5)):
         bar = "#" * (i // 2)
-        sys.stdout.write(f"\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
         sys.stdout.flush()
         time.sleep(0.1)
     print()
@@ -170,7 +198,7 @@ def final_access():
     typing_effect("[!] Welcome, Operator.")
 
 def main():
-    typing_effect("=== CYBER ATTACK INTERFACE ACTIVATED ===\n", 0.03)
+    typing_effect("=== CYBER ATTACK INTERFACE ACTIVATED ===\\n", 0.03)
     
     initialize_sequence()
     brute_force()
@@ -181,10 +209,145 @@ def main():
         override_security()
         final_access()
 
-    typing_effect("\n[✓] Operation completed successfully.")
+    typing_effect("\\n[✓] Operation completed successfully.")
     typing_effect("[✓] Disconnecting trace signals...")
     time.sleep(1)
-    typing_effect("[✓] You were never here.\n")
+    typing_effect("[✓] You were never here.\\n")
+def initialize_sequence():
+    typing_effect("[+] Initializing quantum breach protocol...")
+    time.sleep(1)
+    typing_effect("[+] Bypassing neural firewall...")
+    time.sleep(1)
+    typing_effect("[+] Injecting polymorphic packets...")
+    time.sleep(1)
+
+def brute_force():
+    global ACCESS_LEVEL
+    typing_effect("[*] Starting brute force attack on encrypted node...")
+    for i in range(0, 101, random.randint(1,5)):
+        bar = "#" * (i // 2)
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    ACCESS_LEVEL = 1
+    typing_effect("[+] Encryption cracked successfully!")
+
+def decrypt_mainframe():
+    typing_effect("[*] Decrypting mainframe layers...")
+    layers = ["ALPHA", "BETA", "GAMMA", "OMEGA"]
+    for layer in layers:
+        typing_effect(f"    -> Breaching Layer {layer}...")
+        time.sleep(0.7)
+    typing_effect("[+] All layers decrypted.")
+def initialize_sequence():
+    typing_effect("[+] Initializing quantum breach protocol...")
+    time.sleep(1)
+    typing_effect("[+] Bypassing neural firewall...")
+    time.sleep(1)
+    typing_effect("[+] Injecting polymorphic packets...")
+    time.sleep(1)
+
+def brute_force():
+    global ACCESS_LEVEL
+    typing_effect("[*] Starting brute force attack on encrypted node...")
+    for i in range(0, 101, random.randint(1,5)):
+        bar = "#" * (i // 2)
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    ACCESS_LEVEL = 1
+    typing_effect("[+] Encryption cracked successfully!")
+
+def decrypt_mainframe():
+    typing_effect("[*] Decrypting mainframe layers...")
+    layers = ["ALPHA", "BETA", "GAMMA", "OMEGA"]
+    for layer in layers:
+        typing_effect(f"    -> Breaching Layer {layer}...")
+        time.sleep(0.7)
+    typing_effect("[+] All layers decrypted.")
+def initialize_sequence():
+    typing_effect("[+] Initializing quantum breach protocol...")
+    time.sleep(1)
+    typing_effect("[+] Bypassing neural firewall...")
+    time.sleep(1)
+    typing_effect("[+] Injecting polymorphic packets...")
+    time.sleep(1)
+
+def brute_force():
+    global ACCESS_LEVEL
+    typing_effect("[*] Starting brute force attack on encrypted node...")
+    for i in range(0, 101, random.randint(1,5)):
+        bar = "#" * (i // 2)
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    ACCESS_LEVEL = 1
+    typing_effect("[+] Encryption cracked successfully!")
+
+def decrypt_mainframe():
+    typing_effect("[*] Decrypting mainframe layers...")
+    layers = ["ALPHA", "BETA", "GAMMA", "OMEGA"]
+    for layer in layers:
+        typing_effect(f"    -> Breaching Layer {layer}...")
+        time.sleep(0.7)
+    typing_effect("[+] All layers decrypted.")
+def initialize_sequence():
+    typing_effect("[+] Initializing quantum breach protocol...")
+    time.sleep(1)
+    typing_effect("[+] Bypassing neural firewall...")
+    time.sleep(1)
+    typing_effect("[+] Injecting polymorphic packets...")
+    time.sleep(1)
+
+def brute_force():
+    global ACCESS_LEVEL
+    typing_effect("[*] Starting brute force attack on encrypted node...")
+    for i in range(0, 101, random.randint(1,5)):
+        bar = "#" * (i // 2)
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    ACCESS_LEVEL = 1
+    typing_effect("[+] Encryption cracked successfully!")
+
+def decrypt_mainframe():
+    typing_effect("[*] Decrypting mainframe layers...")
+    layers = ["ALPHA", "BETA", "GAMMA", "OMEGA"]
+    for layer in layers:
+        typing_effect(f"    -> Breaching Layer {layer}...")
+        time.sleep(0.7)
+    typing_effect("[+] All layers decrypted.")
+def initialize_sequence():
+    typing_effect("[+] Initializing quantum breach protocol...")
+    time.sleep(1)
+    typing_effect("[+] Bypassing neural firewall...")
+    time.sleep(1)
+    typing_effect("[+] Injecting polymorphic packets...")
+    time.sleep(1)
+
+def brute_force():
+    global ACCESS_LEVEL
+    typing_effect("[*] Starting brute force attack on encrypted node...")
+    for i in range(0, 101, random.randint(1,5)):
+        bar = "#" * (i // 2)
+        sys.stdout.write(f"\\r[ACCESS] [{bar:<50}] {i}%")
+        sys.stdout.flush()
+        time.sleep(0.1)
+    print()
+    ACCESS_LEVEL = 1
+    typing_effect("[+] Encryption cracked successfully!")
+
+def decrypt_mainframe():
+    typing_effect("[*] Decrypting mainframe layers...")
+    layers = ["ALPHA", "BETA", "GAMMA", "OMEGA"]
+    for layer in layers:
+        typing_effect(f"    -> Breaching Layer {layer}...")
+        time.sleep(0.7)
+    typing_effect("[+] All layers decrypted.")
 
 if __name__ == "__main__":
     main()
@@ -192,6 +355,7 @@ if __name__ == "__main__":
 
 let index = 0;
 
+// 타이핑
 function startTyping() {
   document.addEventListener("keydown", () => {
     if (!hacking) return;
@@ -206,7 +370,7 @@ function startTyping() {
       }
     }
 
-    window.scrollTo(0, document.body.scrollHeight);
+    screen.scrollTop = screen.scrollHeight;
   });
 }
 </script>
