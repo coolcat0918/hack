@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coolcat0918.github.io/hack/sitemap.xml
